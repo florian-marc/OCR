@@ -9,6 +9,7 @@ namespace OCR
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("oui");
         }
     }
 }
