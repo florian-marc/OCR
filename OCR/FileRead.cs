@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using OCR.Exceptions;
 namespace OCR
 {
     public class FileRead:IFile
     {
-        string path;
-        FileStream file;
+        private string path;
+        private StreamReader file;
 
         public FileRead(string path)
         {
@@ -16,12 +16,20 @@ namespace OCR
 
         public void OpenFile()
         {
-            file = File.Open(path, FileMode.Open, FileAccess.Read, FileShare.None);
+            file = new StreamReader(this.path);
         }
 
+        //may throw FileNotFoundException
         public void OpenFile(string path)
         {
+            if (path != this.path)
+            {
+                CloseFile();
+                file = new StreamReader(path);
+                this.path = path;
 
+            }
+            else throw new UnauthorizedAccessException();
         }
 
         public void CloseFile()
@@ -31,12 +39,22 @@ namespace OCR
 
         private string _GetLine()
         {
-
+            string output = file.ReadLine();
+            if (output == null)
+            {
+                throw new EndOfFileException();
+            }
+            return output;
         }
 
-        public List<string> GetLine()
+        public string[] GetLine()
         {
+            return _GetLine().Split('\t');
+        }
 
+        public void Rewind()
+        {
+            file.BaseStream.Position = 0;
         }
 
         public string Path

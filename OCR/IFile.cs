@@ -11,6 +11,8 @@ namespace OCR
 
         void CloseFile();
 
-        List<string> GetLine();
+        string[] GetLine();
+
+        void Rewind();
     }
 }
