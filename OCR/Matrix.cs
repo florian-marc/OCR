@@ -23,9 +23,9 @@ namespace OCR
                 while (c<8)
                 {
                     this.matrix[l, c] = listBin[l * 8 + c];
-                    colonne++;
+                    c++;
                 }
-                ligne++;
+                l++;
             }
         }
 
@@ -37,6 +37,11 @@ namespace OCR
         public int Colonne
         {
             get { return colonne; }
+        }
+
+        public int[,] getmatrix
+        {
+            get { return matrix; }
         }
     }
 }
