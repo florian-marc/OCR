@@ -7,11 +7,12 @@ namespace OCR
 {
     public class Matrix
     {
-        public int[,] matrix;
+
+        private int[,] matrix;
 
         Matrix(int[,] matrix)
         {
-            matrix = this.matrix;
+            this.matrix = matrix;
         }
     }
 }
