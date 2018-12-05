@@ -8,24 +8,35 @@ namespace OCR
     public class Matrix
     {
         private static int ligne = 16;
-        private static int colone = 8;
+        private static int colonne = 8;
 
-        private int[,] matrix = new int[ligne, colone];
+        private int[,] matrix;
 
-        public Matrix(List<int> listbin)
+        public Matrix(List<int> listBin)
         {
-            int ligne = 0;
+            matrix = new int[ligne, colonne];
 
-            while(ligne!=15)
+            int l = 0;
+            while(l<16)
             {
-                int colone = 0;
-                while (colone!=8)
+                int c = 0;
+                while (c<8)
                 {
-                    this.matrix[ligne, colone] = listbin[ligne * 8 + colone];
+                    this.matrix[l, c] = listBin[l * 8 + c];
+                    colonne++;
                 }
                 ligne++;
             }
         }
 
+        public int Ligne
+        {
+            get { return ligne; }
+        }
+
+        public int Colonne
+        {
+            get { return colonne; }
+        }
     }
 }
