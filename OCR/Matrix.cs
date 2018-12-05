@@ -8,11 +8,7 @@ namespace OCR
     public class Matrix
     {
 
-        private int[,] matrix;
+        public static int[,] matrix = new int[16, 8];
 
-        Matrix(int[,] matrix)
-        {
-            this.matrix = matrix;
-        }
     }
 }
