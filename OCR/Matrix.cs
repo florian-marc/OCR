@@ -12,7 +12,7 @@ namespace OCR
 
         private int[,] matrix;
 
-        public Matrix(List<int> listBin)
+        public Matrix(int[] listBin)
         {
             matrix = new int[ligne, colonne];
 
