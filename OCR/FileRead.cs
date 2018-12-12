@@ -29,7 +29,10 @@ namespace OCR
                 this.path = path;
 
             }
-            else throw new UnauthorizedAccessException();
+            else
+            {
+                throw new UnauthorizedAccessException();
+            }
         }
 
         public void CloseFile()
