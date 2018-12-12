@@ -3,7 +3,7 @@ using System.IO;
 using OCR.Exceptions;
 namespace OCR
 {
-    public class FileRead:IFile
+    public class FileRead : IFile
     {
         private string path;
         private StreamReader file;
@@ -40,6 +40,19 @@ namespace OCR
             file.Close();
         }
 
+        private int NumberOfLines()
+        {
+            long position = file.BaseStream.Position;
+            int n = 0;
+            Rewind();
+            while(file.ReadLine() != null)
+            {
+                n++;
+            }
+            Rewind(position);
+            return n;
+        }
+
         private string _GetLine()
         {
             string output = file.ReadLine();
@@ -55,14 +68,32 @@ namespace OCR
             return _GetLine().Split('\t');
         }
 
+        private void Rewind(long position)
+        {
+            try{
+                file.BaseStream.Position = position;
+            }
+            catch(ObjectDisposedException)
+            {
+                OpenFile();
+                file.BaseStream.Position = position;
+            }
+        }
+
         public void Rewind()
         {
-            file.BaseStream.Position = 0;
+            Rewind(0);
         }
 
         public string Path
         {
             get { return this.path; }
         }
-    }
+
+        public int NumberOfLines
+        {
+            get { return n => { n 
+
+            }}
+}
 }
