@@ -45,7 +45,7 @@ namespace OCR
             long position = file.BaseStream.Position;
             int n = 0;
             Rewind();
-            while(file.ReadLine() != null)
+            while (file.ReadLine() != null)
             {
                 n++;
             }
@@ -70,10 +70,11 @@ namespace OCR
 
         private void Rewind(long position)
         {
-            try{
+            try
+            {
                 file.BaseStream.Position = position;
             }
-            catch(ObjectDisposedException)
+            catch (ObjectDisposedException)
             {
                 OpenFile();
                 file.BaseStream.Position = position;
@@ -90,10 +91,9 @@ namespace OCR
             get { return this.path; }
         }
 
-        public int NumberOfLines
+        public int GetNumberOfLines
         {
-            get { return n => { n 
-
-            }}
-}
+            get { return NumberOfLines(); }
+        }
+    }
 }
