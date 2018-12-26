@@ -7,13 +7,17 @@ namespace OCR
         private char[] letters;
         private Matrix[] tabMatrix;
 
-        public DataSet(int size)
+        public DataSet(FileRead fr)
         {
+            int size = fr.GetNumberOfLines;
+            fr.Rewind();
             letters = new char[size];
             tabMatrix = new Matrix[size];
             for (int i = 0; i < size; i++)
             {
-                tabMatrix[i] = null;
+                string[] input = fr.GetLine();
+                letters[i] = input[1][0];
+                tabMatrix[i] = new Matrix(input);
             }
         }
 

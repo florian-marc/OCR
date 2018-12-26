@@ -19,7 +19,7 @@ namespace OCR
         {
             int[] tabint = new int[listBin.Length - 6];
             int n = 0;
-            for(int i = 6; i<listBin.Length; i++)
+            for(int i = 6; i<listBin.Length - 1; i++)
             {
                 tabint[n] = Convert.ToInt32(listBin[i]);
                 n++;

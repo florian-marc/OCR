@@ -14,9 +14,10 @@ namespace OCR
             string sourcePath = Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).FullName).FullName;
             string[] paths = {"data", "letter.data"};
             FileRead file = new FileRead(Path.Combine(sourcePath, Path.Combine(paths[0], paths[1])));
-            DataSet Data = new DataSet(file.GetNumberOfLines);
+            file.OpenFile();
+            DataSet Data = new DataSet(file);
 
-            for(int i = 0; i<52152; i++)
+            for(int i = 0; i<file.GetNumberOfLines; i++)
             {
 
             }
